@@ -1,0 +1,109 @@
+/* Selling */
+
+#include<iostream>
+using namespace std;
+#define SIZE 2
+class Selling {
+private:
+int SelID;
+char SelDate[20];
+char SelDescription[50];
+double SelPrice;
+int count = 0;
+Payment* payment[SIZE];
+public:
+Selling();
+Selling(int pselID, const char pseldate[], const char
+pseldescription[], double pselprice, int pay1, int pay2);
+void calculateSellPrice(int id, const char pType[], double
+pAmt);
+void displaySelPrice();
+void addSelling();
+~Selling();
+};
+Selling::Selling()
+{
+SelID = 0;
+strcpy(SelDate, "");
+strcpy(SelDescription, "");
+SelPrice = 0;
+}
+
+Selling::Selling(int pselID, const char pseldate[], const char
+pseldescription[], double pselprice, int pay1, int pay2)
+{
+SelPrice = pselprice;
+strcpy(SelDate, pseldate);
+strcpy(SelDescription, pseldescription);
+SelID = pselID;
+}
+void Selling::calculateSellPrice(int id, const char pType[], double
+pAmt)
+{
+if (count < SIZE)
+{
+payment[count] = new Payment(id, pType, pAmt);
+count++;
+}
+}
+void Selling::displaySelPrice()
+{
+}
+void Selling::addSelling()
+{
+}
+Selling::~Selling()
+{
+//Destructor 
+for (int i = 0; i < SIZE; i++)
+{
+delete selling[i];
+}
+}
+
+
+
+/* Payment */
+
+#include<iostream>
+using namespace std;
+class Payment
+{
+private:
+int payID;
+char payType[20];
+double payAmount;
+public:
+Payment();
+Payment(int pID,const char ppayType[],double ppayAmount);
+void checkPayment();
+void confirmPayment();
+void displayPaymentDetails();
+~Payment();
+};
+Payment::Payment()
+{
+payID = 0;
+strcpy(payType, "");
+payAmount = 0;
+}
+Payment::Payment(int pID, const char ppayType[], double ppayAmount)
+{
+payID = pID;
+strcpy(payType, ppayType);
+payAmount = ppayAmount;
+}
+
+void Payment::checkPayment()
+{
+}
+void Payment::confirmPayment()
+{
+}
+void Payment::displayPaymentDetails()
+{
+}
+Payment::~Payment()
+{
+//Destructor 
+}
